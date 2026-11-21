@@ -38,10 +38,10 @@ authors = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://thorwhalen.github.io/ayn/"
-Repository = "https://github.com/thorwhalen/ayn"
-Issues = "https://github.com/thorwhalen/ayn/issues"
-Changelog = "https://github.com/thorwhalen/ayn/blob/main/CHANGELOG.md"
+Homepage = "https://addaix.github.io/ayn/"
+Repository = "https://github.com/addaix/ayn"
+Issues = "https://github.com/addaix/ayn/issues"
+Changelog = "https://github.com/addaix/ayn/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 fastapi = [
