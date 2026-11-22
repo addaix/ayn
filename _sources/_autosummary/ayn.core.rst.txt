@@ -1,0 +1,23 @@
+ayn.core
+========
+
+.. automodule:: ayn.core
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AgentFramework
+      AgentModality
+      AgentMetadata
+      ControllerConfig
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   config
+   models

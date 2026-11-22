@@ -1,0 +1,12 @@
+ayn.controllers.generic
+=======================
+
+.. automodule:: ayn.controllers.generic
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      GenericController
+   

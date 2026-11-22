@@ -1,0 +1,21 @@
+ayn.actions
+===========
+
+.. automodule:: ayn.actions
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      generate_chatgpt_action
+      generate_claude_mcp_config
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   chatgpt
+   claude

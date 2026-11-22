@@ -1,4 +1,0 @@
-ayn.controllers
-===============
-.. automodule:: ayn.controllers
-   :members:

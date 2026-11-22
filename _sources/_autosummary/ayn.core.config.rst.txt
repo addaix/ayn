@@ -1,0 +1,12 @@
+ayn.core.config
+===============
+
+.. automodule:: ayn.core.config
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      ControllerConfig
+   

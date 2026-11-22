@@ -1,0 +1,29 @@
+ayn.mcp
+=======
+
+.. automodule:: ayn.mcp
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      controller_to_mcp_server
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      MCPTool
+      MCPResource
+      MCPPrompt
+      MCPServer
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   models
+   server

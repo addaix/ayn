@@ -1,0 +1,15 @@
+ayn.registry.searchers
+======================
+
+.. automodule:: ayn.registry.searchers
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AgentSearcher
+      AwesomeListSearcher
+      GitHubAgentSearcher
+      HuggingFaceAgentSearcher
+   

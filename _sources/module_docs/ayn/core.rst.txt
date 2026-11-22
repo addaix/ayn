@@ -1,4 +1,0 @@
-ayn.core
-========
-.. automodule:: ayn.core
-   :members:

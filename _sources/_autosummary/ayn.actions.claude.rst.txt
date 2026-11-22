@@ -1,0 +1,12 @@
+ayn.actions.claude
+==================
+
+.. automodule:: ayn.actions.claude
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      generate_claude_mcp_config
+   

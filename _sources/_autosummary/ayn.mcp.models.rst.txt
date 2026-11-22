@@ -1,0 +1,14 @@
+ayn.mcp.models
+==============
+
+.. automodule:: ayn.mcp.models
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      MCPPrompt
+      MCPResource
+      MCPTool
+   

@@ -1,0 +1,14 @@
+ayn.core.models
+===============
+
+.. automodule:: ayn.core.models
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AgentFramework
+      AgentMetadata
+      AgentModality
+   

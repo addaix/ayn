@@ -1,0 +1,24 @@
+ayn.registry
+============
+
+.. automodule:: ayn.registry
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AgentSearcher
+      GitHubAgentSearcher
+      HuggingFaceAgentSearcher
+      AwesomeListSearcher
+      AgentRegistry
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   base
+   searchers

@@ -1,0 +1,14 @@
+ayn.controllers.framework
+=========================
+
+.. automodule:: ayn.controllers.framework
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AutoGenController
+      CrewAIController
+      LangChainController
+   

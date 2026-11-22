@@ -1,0 +1,18 @@
+ayn.mcp.server
+==============
+
+.. automodule:: ayn.mcp.server
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      controller_to_mcp_server
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      MCPServer
+   

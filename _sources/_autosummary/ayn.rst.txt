@@ -1,0 +1,55 @@
+﻿ayn
+===
+
+.. automodule:: ayn
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      export_as_fastapi
+      export_as_langserve
+      controller_to_mcp_server
+      generate_chatgpt_action
+      generate_claude_mcp_config
+      create_agent_from_registry
+      export_agent_full_stack
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AgentFramework
+      AgentModality
+      AgentMetadata
+      ControllerConfig
+      AgentSearcher
+      GitHubAgentSearcher
+      HuggingFaceAgentSearcher
+      AwesomeListSearcher
+      AgentRegistry
+      AgentController
+      BaseAgentController
+      GenericController
+      CrewAIController
+      LangChainController
+      AutoGenController
+      MCPTool
+      MCPResource
+      MCPPrompt
+      MCPServer
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   actions
+   controllers
+   core
+   export
+   mcp
+   registry
+   utils

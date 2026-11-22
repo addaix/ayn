@@ -1,0 +1,12 @@
+ayn.registry.base
+=================
+
+.. automodule:: ayn.registry.base
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AgentRegistry
+   

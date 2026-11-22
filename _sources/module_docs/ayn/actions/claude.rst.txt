@@ -1,4 +1,0 @@
-ayn.actions.claude
-==================
-.. automodule:: ayn.actions.claude
-   :members:

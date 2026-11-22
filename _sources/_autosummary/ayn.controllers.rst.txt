@@ -1,0 +1,26 @@
+ayn.controllers
+===============
+
+.. automodule:: ayn.controllers
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AgentController
+      BaseAgentController
+      GenericController
+      CrewAIController
+      LangChainController
+      AutoGenController
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   base
+   framework
+   generic

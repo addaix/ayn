@@ -1,0 +1,13 @@
+ayn.controllers.base
+====================
+
+.. automodule:: ayn.controllers.base
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AgentController
+      BaseAgentController
+   

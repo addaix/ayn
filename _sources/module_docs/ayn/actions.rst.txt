@@ -1,4 +1,0 @@
-ayn.actions
-===========
-.. automodule:: ayn.actions
-   :members:

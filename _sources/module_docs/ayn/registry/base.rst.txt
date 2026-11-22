@@ -1,4 +1,0 @@
-ayn.registry.base
-=================
-.. automodule:: ayn.registry.base
-   :members:

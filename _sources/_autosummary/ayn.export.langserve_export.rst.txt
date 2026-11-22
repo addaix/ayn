@@ -1,0 +1,12 @@
+ayn.export.langserve\_export
+============================
+
+.. automodule:: ayn.export.langserve_export
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      export_as_langserve
+   

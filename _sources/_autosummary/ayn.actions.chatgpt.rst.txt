@@ -1,0 +1,12 @@
+ayn.actions.chatgpt
+===================
+
+.. automodule:: ayn.actions.chatgpt
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      generate_chatgpt_action
+   

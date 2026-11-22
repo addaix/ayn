@@ -1,0 +1,12 @@
+ayn.export.fastapi\_export
+==========================
+
+.. automodule:: ayn.export.fastapi_export
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      export_as_fastapi
+   

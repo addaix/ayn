@@ -1,0 +1,39 @@
+# ayn
+
+> Agents You Need -- Tools to search and access the AI agents you need
+
+
+## Pages
+
+- [AYN - Agents You Need](index.html.md): &#42;&#42;The meta-framework for AI agent interoperability&#42;&#42;
+- [API reference](api.html.md): | &#96;ayn&#96;   | ayn - Agents You Need   |
+- [ayn](_autosummary/ayn.html.md): ayn - Agents You Need
+- [ayn.actions](_autosummary/ayn.actions.html.md): Custom actions for ChatGPT and Claude.
+- [ayn.actions.chatgpt](_autosummary/ayn.actions.chatgpt.html.md): ChatGPT custom action generation.
+- [ayn.actions.claude](_autosummary/ayn.actions.claude.html.md): Claude Desktop MCP configuration generation.
+- [ayn.controllers](_autosummary/ayn.controllers.html.md): Agent controllers for invoking agents.
+- [ayn.controllers.base](_autosummary/ayn.controllers.base.html.md): Base controller protocol and abstract class.
+- [ayn.controllers.framework](_autosummary/ayn.controllers.framework.html.md): Framework-specific controller implementations.
+- [ayn.controllers.generic](_autosummary/ayn.controllers.generic.html.md): Generic controller for custom agents.
+- [ayn.core](_autosummary/ayn.core.html.md): Core data models and configuration for AYN.
+- [ayn.core.config](_autosummary/ayn.core.config.html.md): Configuration for agent controllers.
+- [ayn.core.models](_autosummary/ayn.core.models.html.md): Core data models for agents.
+- [ayn.export](_autosummary/ayn.export.html.md): Export agents as HTTP/REST services.
+- [ayn.export.fastapi_export](_autosummary/ayn.export.fastapi_export.html.md): FastAPI export functionality.
+- [ayn.export.langserve_export](_autosummary/ayn.export.langserve_export.html.md): LangServe export functionality.
+- [ayn.mcp](_autosummary/ayn.mcp.html.md): Model Context Protocol support.
+- [ayn.mcp.models](_autosummary/ayn.mcp.models.html.md): MCP data models.
+- [ayn.mcp.server](_autosummary/ayn.mcp.server.html.md): MCP server implementation.
+- [ayn.registry](_autosummary/ayn.registry.html.md): Agent registry and search functionality.
+- [ayn.registry.base](_autosummary/ayn.registry.base.html.md): Agent registry implementation.
+- [ayn.registry.searchers](_autosummary/ayn.registry.searchers.html.md): Agent searcher implementations.
+- [ayn.utils](_autosummary/ayn.utils.html.md): Convenience utility functions.
+- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-22 14:03 UTC&#42;&#42; from commit &lt;a href="https://github.com/add...
+
+## Optional
+
+- [ayn.md](ayn.md): Complete documentation in a single file.
+
+## Build
+
+- [build_info.json](build_info.json): build provenance (commit, version, tool versions, whether the docs match the package)

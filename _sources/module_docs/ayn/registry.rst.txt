@@ -1,4 +1,0 @@
-ayn.registry
-============
-.. automodule:: ayn.registry
-   :members:

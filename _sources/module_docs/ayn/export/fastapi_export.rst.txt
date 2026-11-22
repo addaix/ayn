@@ -1,4 +1,0 @@
-ayn.export.fastapi_export
-=========================
-.. automodule:: ayn.export.fastapi_export
-   :members:

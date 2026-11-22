@@ -1,4 +1,0 @@
-ayn.mcp
-=======
-.. automodule:: ayn.mcp
-   :members:
