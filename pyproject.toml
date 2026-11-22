@@ -119,6 +119,7 @@ minversion = "6.0"
 addopts = "--doctest-modules"
 testpaths = [
     "ayn",
+    "tests",
 ]
 doctest_optionflags = [
     "NORMALIZE_WHITESPACE",
