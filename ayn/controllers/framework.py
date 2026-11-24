@@ -8,7 +8,8 @@ from .generic import GenericController
 class CrewAIController(GenericController):
     """Controller for CrewAI agents
 
-    TODO: Implement full CrewAI integration
+    Not implemented yet: today this behaves exactly like :class:`GenericController`
+    (it echoes its input) and does not run a CrewAI agent.
     See AYN_IMPLEMENTATION_ROADMAP.md for details
     """
 
@@ -18,7 +19,8 @@ class CrewAIController(GenericController):
 class LangChainController(GenericController):
     """Controller for LangChain agents
 
-    TODO: Implement full LangChain integration
+    Not implemented yet: today this behaves exactly like :class:`GenericController`
+    (it echoes its input) and does not run a LangChain agent.
     See AYN_IMPLEMENTATION_ROADMAP.md for details
     """
 
@@ -28,7 +30,8 @@ class LangChainController(GenericController):
 class AutoGenController(GenericController):
     """Controller for AutoGen agents
 
-    TODO: Implement full AutoGen integration
+    Not implemented yet: today this behaves exactly like :class:`GenericController`
+    (it echoes its input) and does not run an AutoGen agent.
     See AYN_IMPLEMENTATION_ROADMAP.md for details
     """
 

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import warnings
 from collections.abc import MutableMapping
 from typing import Dict, List, Optional
 
@@ -119,6 +120,10 @@ class AgentRegistry(MutableMapping[str, AgentMetadata]):
                     results.extend(remote_results)
                     if len(results) >= limit:
                         break
+                except NotImplementedError as e:
+                    # A searcher that is a declared stub: say so, then go on.
+                    warnings.warn(str(e), stacklevel=2)
+                    continue
                 except Exception as e:
                     # Continue on error
                     continue

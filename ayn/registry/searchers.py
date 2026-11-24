@@ -41,7 +41,7 @@ class GitHubAgentSearcher:
     def search(
         self, query: str, *, limit: int = 20, **filters
     ) -> Iterable[AgentMetadata]:
-        """Search GitHub for agent repos"""
+        """Search GitHub for agent repos (not implemented: raises ``NotImplementedError``)"""
         # Simplified implementation - real version would use GitHub API
         # TODO: Implement actual GitHub API search
         framework_filter = filters.get("framework")
@@ -49,8 +49,9 @@ class GitHubAgentSearcher:
         if framework_filter:
             search_terms += f" {framework_filter}"
 
-        # Placeholder - would normally make API calls
-        return []
+        raise NotImplementedError(
+            "GitHubAgentSearcher is not implemented yet (no GitHub API search)."
+        )
 
 
 class HuggingFaceAgentSearcher:
@@ -70,14 +71,9 @@ class HuggingFaceAgentSearcher:
         self, query: str, *, limit: int = 20, **filters
     ) -> Iterable[AgentMetadata]:
         """Search Hugging Face for agents"""
-        try:
-            # Try to use HuggingFace MCP tools if available
-            # This would integrate with the HF tools we have access to
-            pass
-        except Exception:
-            pass
-
-        return []
+        raise NotImplementedError(
+            "HuggingFaceAgentSearcher is not implemented yet (no Hugging Face search)."
+        )
 
 
 class AwesomeListSearcher:
@@ -100,4 +96,6 @@ class AwesomeListSearcher:
         """Search awesome lists"""
         # TODO: Implement markdown parsing and search
         # Would use graze to download and cache the markdown files
-        return []
+        raise NotImplementedError(
+            "AwesomeListSearcher is not implemented yet (no awesome-list parsing)."
+        )
