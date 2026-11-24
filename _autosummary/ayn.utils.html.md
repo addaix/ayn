@@ -26,7 +26,8 @@ Search registry and create agent controller
 ```pycon
 >>> from ayn import AgentRegistry
 >>> from ayn.core import AgentMetadata, AgentFramework
->>> registry = AgentRegistry(searchers=[])
+>>> import tempfile
+>>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
 >>> meta = AgentMetadata(name="test-agent", description="test", framework=AgentFramework.CUSTOM)
 >>> registry['test-agent'] = meta
 >>> controller = create_agent_from_registry(registry, 'test')

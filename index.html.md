@@ -28,21 +28,17 @@ from ayn import AgentRegistry, BaseAgentController, export_agent_full_stack
 
 # 1. Search for agents
 registry = AgentRegistry()
-results = registry.search('data preparation')
+results = registry.search("data preparation")
 
 # 2. Create controller
 controller = BaseAgentController.from_metadata(results[0])
 
 # 3. Use the agent
-result = controller.invoke({'data': [1, 2, 3]})
+result = controller.invoke({"data": [1, 2, 3]})
 
 # 4. Export with all integrations
 artifacts = export_agent_full_stack(
-    controller,
-    results[0],
-    export_fastapi=True,
-    export_mcp=True,
-    export_chatgpt=True
+    controller, results[0], export_fastapi=True, export_mcp=True, export_chatgpt=True
 )
 ```
 

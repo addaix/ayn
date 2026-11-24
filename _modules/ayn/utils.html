@@ -302,7 +302,8 @@
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; from ayn import AgentRegistry</span>
 <span class="sd">        &gt;&gt;&gt; from ayn.core import AgentMetadata, AgentFramework</span>
-<span class="sd">        &gt;&gt;&gt; registry = AgentRegistry(searchers=[])</span>
+<span class="sd">        &gt;&gt;&gt; import tempfile</span>
+<span class="sd">        &gt;&gt;&gt; registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())</span>
 <span class="sd">        &gt;&gt;&gt; meta = AgentMetadata(name="test-agent", description="test", framework=AgentFramework.CUSTOM)</span>
 <span class="sd">        &gt;&gt;&gt; registry['test-agent'] = meta</span>
 <span class="sd">        &gt;&gt;&gt; controller = create_agent_from_registry(registry, 'test')</span>
@@ -410,7 +411,7 @@
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=7cc827d7"></script>
+</div><script src="../../_static/documentation_options.js?v=94eb6667"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>

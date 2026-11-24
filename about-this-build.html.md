@@ -2,18 +2,16 @@
 
 # About this build
 
-This documentation was built on **2026-11-24 01:37 UTC** from commit <a href="https://github.com/addaix/ayn/commit/35c28b83661970a1445db1bc4a6e70c66fc4e942"><code>35c28b8</code></a> on branch <code>main</code>, for **ayn 0.0.3** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-24 04:38 UTC** from commit <a href="https://github.com/addaix/ayn/commit/bb6d744a405f2bd5e234bc58abac0df95221491a"><code>bb6d744</code></a> on branch <code>main</code>, for **ayn 0.0.4** (from <code>pyproject.toml</code>).
 
-#### WARNING
-The documentation and the package may be misaligned:
-
-- The documented version (0.0.3) is behind the latest release on PyPI (0.0.4): `pip install ayn` gives newer code than these docs describe.
+#### NOTE
+Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 
 ## Source
 
 |                     |                                                                                                                                                   |
 |---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/addaix/ayn/commit/35c28b83661970a1445db1bc4a6e70c66fc4e942"><code>35c28b83661970a1445db1bc4a6e70c66fc4e942</code></a> |
+| Commit              | <a href="https://github.com/addaix/ayn/commit/bb6d744a405f2bd5e234bc58abac0df95221491a"><code>bb6d744a405f2bd5e234bc58abac0df95221491a</code></a> |
 | Branch              | <code>main</code>                                                                                                                                 |
 | Tags at this commit | none                                                                                                                                              |
 | Working tree        | clean                                                                                                                                             |
@@ -24,9 +22,9 @@ The documentation and the package may be misaligned:
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>addaix/ayn</code>                                                                    |
-| Run          | <a href="https://github.com/addaix/ayn/actions/runs/45306296998">45306296998</a>           |
+| Run          | <a href="https://github.com/addaix/ayn/actions/runs/45327654050">45327654050</a>           |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>35c28b83661970a1445db1bc4a6e70c66fc4e942</code> (in the history of the built commit) |
+| Event commit | <code>bb6d744a405f2bd5e234bc58abac0df95221491a</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -51,13 +49,13 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/ayn/0.0.4/">0.0.4</a>, newer than the documented version (0.0.3).
+Latest release: <a href="https://pypi.org/project/ayn/0.0.4/">0.0.4</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/addaix/ayn && cd ayn
-git checkout 35c28b83661970a1445db1bc4a6e70c66fc4e942
+git checkout bb6d744a405f2bd5e234bc58abac0df95221491a
 pip install "epythet==0.2.25"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```

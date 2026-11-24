@@ -310,8 +310,11 @@
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MutableMapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference internal" href="ayn.core.models.html#ayn.core.models.AgentMetadata" title="ayn.core.models.AgentMetadata"><code class="xref py py-class docutils literal notranslate"><span class="pre">AgentMetadata</span></code></a>]</p>
 <p>Unified registry for searching and managing agents</p>
 <p>Aggregates results from multiple sources and provides a dict-like interface.</p>
+<p>Pass <code class="docutils literal notranslate"><span class="pre">searchers=[]</span></code> for a local-only registry, and a <code class="docutils literal notranslate"><span class="pre">cache_dir</span></code> to keep the
+cache out of <code class="docutils literal notranslate"><span class="pre">~/.ayn/registry</span></code>.</p>
 <p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span> <span class="o">=</span> <span class="n">AgentRegistry</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span> <span class="o">=</span> <span class="n">AgentRegistry</span><span class="p">(</span><span class="n">searchers</span><span class="o">=</span><span class="p">[],</span> <span class="n">cache_dir</span><span class="o">=</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add a local agent</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ayn.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentMetadata</span><span class="p">,</span> <span class="n">AgentFramework</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">meta</span> <span class="o">=</span> <span class="n">AgentMetadata</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"test"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"test"</span><span class="p">,</span> <span class="n">framework</span><span class="o">=</span><span class="n">AgentFramework</span><span class="o">.</span><span class="n">CUSTOM</span><span class="p">)</span>
@@ -345,7 +348,8 @@
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span> <span class="o">=</span> <span class="n">AgentRegistry</span><span class="p">(</span><span class="n">searchers</span><span class="o">=</span><span class="p">[])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span> <span class="o">=</span> <span class="n">AgentRegistry</span><span class="p">(</span><span class="n">searchers</span><span class="o">=</span><span class="p">[],</span> <span class="n">cache_dir</span><span class="o">=</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add some test data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ayn.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentMetadata</span><span class="p">,</span> <span class="n">AgentFramework</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span><span class="p">[</span><span class="s1">'agent1'</span><span class="p">]</span> <span class="o">=</span> <span class="n">AgentMetadata</span><span class="p">(</span>
@@ -561,7 +565,7 @@
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=7cc827d7"></script>
+</div><script src="../_static/documentation_options.js?v=94eb6667"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>

@@ -317,7 +317,8 @@
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ayn</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentRegistry</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ayn.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentMetadata</span><span class="p">,</span> <span class="n">AgentFramework</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span> <span class="o">=</span> <span class="n">AgentRegistry</span><span class="p">(</span><span class="n">searchers</span><span class="o">=</span><span class="p">[])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span> <span class="o">=</span> <span class="n">AgentRegistry</span><span class="p">(</span><span class="n">searchers</span><span class="o">=</span><span class="p">[],</span> <span class="n">cache_dir</span><span class="o">=</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">meta</span> <span class="o">=</span> <span class="n">AgentMetadata</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"test-agent"</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"test"</span><span class="p">,</span> <span class="n">framework</span><span class="o">=</span><span class="n">AgentFramework</span><span class="o">.</span><span class="n">CUSTOM</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span><span class="p">[</span><span class="s1">'test-agent'</span><span class="p">]</span> <span class="o">=</span> <span class="n">meta</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">controller</span> <span class="o">=</span> <span class="n">create_agent_from_registry</span><span class="p">(</span><span class="n">registry</span><span class="p">,</span> <span class="s1">'test'</span><span class="p">)</span>
@@ -425,7 +426,7 @@
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=7cc827d7"></script>
+</div><script src="../_static/documentation_options.js?v=94eb6667"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>

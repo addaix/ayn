@@ -1,32 +1,32 @@
 {
   "schema_version": 1,
-  "built_at": "2026-11-24T01:37:58Z",
+  "built_at": "2026-11-24T04:38:54Z",
   "package": {
     "name": "ayn",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "display_name": "ayn",
     "source": "pyproject.toml"
   },
   "git": {
     "available": true,
-    "commit": "35c28b83661970a1445db1bc4a6e70c66fc4e942",
-    "short_commit": "35c28b8",
+    "commit": "bb6d744a405f2bd5e234bc58abac0df95221491a",
+    "short_commit": "bb6d744",
     "branch": "main",
     "tags": [],
     "dirty": false,
     "remote_url": "https://github.com/addaix/ayn",
-    "commit_url": "https://github.com/addaix/ayn/commit/35c28b83661970a1445db1bc4a6e70c66fc4e942",
+    "commit_url": "https://github.com/addaix/ayn/commit/bb6d744a405f2bd5e234bc58abac0df95221491a",
     "error": null
   },
   "ci": {
     "provider": "github",
     "repository": "addaix/ayn",
-    "sha": "35c28b83661970a1445db1bc4a6e70c66fc4e942",
+    "sha": "bb6d744a405f2bd5e234bc58abac0df95221491a",
     "sha_in_history": true,
     "ref": "refs/heads/main",
     "ref_name": "main",
-    "run_id": "45306296998",
-    "run_url": "https://github.com/addaix/ayn/actions/runs/45306296998",
+    "run_id": "45327654050",
+    "run_url": "https://github.com/addaix/ayn/actions/runs/45327654050",
     "server_url": "https://github.com"
   },
   "tools": {
@@ -61,15 +61,13 @@
   "pypi": {
     "checked": true,
     "latest": "0.0.4",
-    "relation": "behind",
+    "relation": "same",
     "error": null
   },
-  "reproduce": "git clone https://github.com/addaix/ayn && cd ayn\ngit checkout 35c28b83661970a1445db1bc4a6e70c66fc4e942\npip install \"epythet==0.2.25\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/addaix/ayn && cd ayn\ngit checkout bb6d744a405f2bd5e234bc58abac0df95221491a\npip install \"epythet==0.2.25\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
-    "aligned": false,
-    "notes": [
-      "The documented version (0.0.3) is behind the latest release on PyPI (0.0.4): `pip install ayn` gives newer code than these docs describe."
-    ]
+    "aligned": true,
+    "notes": []
   }
 }

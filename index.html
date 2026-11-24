@@ -306,21 +306,17 @@
 
 <span class="c1"># 1. Search for agents</span>
 <span class="n">registry</span> <span class="o">=</span> <span class="n">AgentRegistry</span><span class="p">()</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">'data preparation'</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">"data preparation"</span><span class="p">)</span>
 
 <span class="c1"># 2. Create controller</span>
 <span class="n">controller</span> <span class="o">=</span> <span class="n">BaseAgentController</span><span class="o">.</span><span class="n">from_metadata</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="c1"># 3. Use the agent</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s1">'data'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"data"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
 
 <span class="c1"># 4. Export with all integrations</span>
 <span class="n">artifacts</span> <span class="o">=</span> <span class="n">export_agent_full_stack</span><span class="p">(</span>
-    <span class="n">controller</span><span class="p">,</span>
-    <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="n">export_fastapi</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">export_mcp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">export_chatgpt</span><span class="o">=</span><span class="kc">True</span>
+    <span class="n">controller</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">export_fastapi</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">export_mcp</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">export_chatgpt</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -460,7 +456,7 @@ pip<span class="w"> </span>install<span class="w"> </span>ayn<span class="o">[</
 </section>
 </section>
 
-<p class="epythet-provenance" style="font-size:.8em;opacity:.65;margin-top:2.5em;text-align:right">built 2026-11-24 01:37 UTC from <a href="https://github.com/addaix/ayn/commit/35c28b83661970a1445db1bc4a6e70c66fc4e942">35c28b8</a> (main) · ayn 0.0.3 · <a href="about-this-build.html">about this build</a></p>
+<p class="epythet-provenance" style="font-size:.8em;opacity:.65;margin-top:2.5em;text-align:right">built 2026-11-24 04:38 UTC from <a href="https://github.com/addaix/ayn/commit/bb6d744a405f2bd5e234bc58abac0df95221491a">bb6d744</a> (main) · ayn 0.0.4 · <a href="about-this-build.html">about this build</a></p>
         </article>
       </div>
       <footer>
@@ -530,7 +526,7 @@ pip<span class="w"> </span>install<span class="w"> </span>ayn<span class="o">[</
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=7cc827d7"></script>
+</div><script src="_static/documentation_options.js?v=94eb6667"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>

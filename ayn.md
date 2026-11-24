@@ -1,4 +1,4 @@
-> built 2026-11-24 01:37 UTC from 35c28b8 (main) · ayn 0.0.3. Details: build_info.json
+> built 2026-11-24 04:38 UTC from bb6d744 (main) · ayn 0.0.4. Details: build_info.json
 
 # index.html.md
 
@@ -32,21 +32,17 @@ from ayn import AgentRegistry, BaseAgentController, export_agent_full_stack
 
 # 1. Search for agents
 registry = AgentRegistry()
-results = registry.search('data preparation')
+results = registry.search("data preparation")
 
 # 2. Create controller
 controller = BaseAgentController.from_metadata(results[0])
 
 # 3. Use the agent
-result = controller.invoke({'data': [1, 2, 3]})
+result = controller.invoke({"data": [1, 2, 3]})
 
 # 4. Export with all integrations
 artifacts = export_agent_full_stack(
-    controller,
-    results[0],
-    export_fastapi=True,
-    export_mcp=True,
-    export_chatgpt=True
+    controller, results[0], export_fastapi=True, export_mcp=True, export_chatgpt=True
 )
 ```
 
@@ -1168,10 +1164,14 @@ Unified registry for searching and managing agents
 
 Aggregates results from multiple sources and provides a dict-like interface.
 
+Pass `searchers=[]` for a local-only registry, and a `cache_dir` to keep the
+cache out of `~/.ayn/registry`.
+
 ### Example
 
 ```pycon
->>> registry = AgentRegistry()
+>>> import tempfile
+>>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
 >>> # Add a local agent
 >>> from ayn.core import AgentMetadata, AgentFramework
 >>> meta = AgentMetadata(name="test", description="test", framework=AgentFramework.CUSTOM)
@@ -1199,7 +1199,8 @@ Search across all sources
 ### Example
 
 ```pycon
->>> registry = AgentRegistry(searchers=[])
+>>> import tempfile
+>>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
 >>> # Add some test data
 >>> from ayn.core import AgentMetadata, AgentFramework
 >>> registry['agent1'] = AgentMetadata(
@@ -1617,7 +1618,8 @@ Search registry and create agent controller
 ```pycon
 >>> from ayn import AgentRegistry
 >>> from ayn.core import AgentMetadata, AgentFramework
->>> registry = AgentRegistry(searchers=[])
+>>> import tempfile
+>>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
 >>> meta = AgentMetadata(name="test-agent", description="test", framework=AgentFramework.CUSTOM)
 >>> registry['test-agent'] = meta
 >>> controller = create_agent_from_registry(registry, 'test')
@@ -2198,10 +2200,14 @@ Unified registry for searching and managing agents
 
 Aggregates results from multiple sources and provides a dict-like interface.
 
+Pass `searchers=[]` for a local-only registry, and a `cache_dir` to keep the
+cache out of `~/.ayn/registry`.
+
 ### Example
 
 ```pycon
->>> registry = AgentRegistry()
+>>> import tempfile
+>>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
 >>> # Add a local agent
 >>> from ayn.core import AgentMetadata, AgentFramework
 >>> meta = AgentMetadata(name="test", description="test", framework=AgentFramework.CUSTOM)
@@ -2229,7 +2235,8 @@ Search across all sources
 ### Example
 
 ```pycon
->>> registry = AgentRegistry(searchers=[])
+>>> import tempfile
+>>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
 >>> # Add some test data
 >>> from ayn.core import AgentMetadata, AgentFramework
 >>> registry['agent1'] = AgentMetadata(
@@ -2265,10 +2272,14 @@ Unified registry for searching and managing agents
 
 Aggregates results from multiple sources and provides a dict-like interface.
 
+Pass `searchers=[]` for a local-only registry, and a `cache_dir` to keep the
+cache out of `~/.ayn/registry`.
+
 ### Example
 
 ```pycon
->>> registry = AgentRegistry()
+>>> import tempfile
+>>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
 >>> # Add a local agent
 >>> from ayn.core import AgentMetadata, AgentFramework
 >>> meta = AgentMetadata(name="test", description="test", framework=AgentFramework.CUSTOM)
@@ -2296,7 +2307,8 @@ Search across all sources
 ### Example
 
 ```pycon
->>> registry = AgentRegistry(searchers=[])
+>>> import tempfile
+>>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
 >>> # Add some test data
 >>> from ayn.core import AgentMetadata, AgentFramework
 >>> registry['agent1'] = AgentMetadata(
@@ -2522,7 +2534,8 @@ Search registry and create agent controller
 ```pycon
 >>> from ayn import AgentRegistry
 >>> from ayn.core import AgentMetadata, AgentFramework
->>> registry = AgentRegistry(searchers=[])
+>>> import tempfile
+>>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
 >>> meta = AgentMetadata(name="test-agent", description="test", framework=AgentFramework.CUSTOM)
 >>> registry['test-agent'] = meta
 >>> controller = create_agent_from_registry(registry, 'test')
@@ -2570,18 +2583,16 @@ True
 
 # About this build
 
-This documentation was built on **2026-11-24 01:37 UTC** from commit <a href="https://github.com/addaix/ayn/commit/35c28b83661970a1445db1bc4a6e70c66fc4e942"><code>35c28b8</code></a> on branch <code>main</code>, for **ayn 0.0.3** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-24 04:38 UTC** from commit <a href="https://github.com/addaix/ayn/commit/bb6d744a405f2bd5e234bc58abac0df95221491a"><code>bb6d744</code></a> on branch <code>main</code>, for **ayn 0.0.4** (from <code>pyproject.toml</code>).
 
-#### WARNING
-The documentation and the package may be misaligned:
-
-- The documented version (0.0.3) is behind the latest release on PyPI (0.0.4): `pip install ayn` gives newer code than these docs describe.
+#### NOTE
+Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 
 ## Source
 
 |                     |                                                                                                                                                   |
 |---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/addaix/ayn/commit/35c28b83661970a1445db1bc4a6e70c66fc4e942"><code>35c28b83661970a1445db1bc4a6e70c66fc4e942</code></a> |
+| Commit              | <a href="https://github.com/addaix/ayn/commit/bb6d744a405f2bd5e234bc58abac0df95221491a"><code>bb6d744a405f2bd5e234bc58abac0df95221491a</code></a> |
 | Branch              | <code>main</code>                                                                                                                                 |
 | Tags at this commit | none                                                                                                                                              |
 | Working tree        | clean                                                                                                                                             |
@@ -2592,9 +2603,9 @@ The documentation and the package may be misaligned:
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>addaix/ayn</code>                                                                    |
-| Run          | <a href="https://github.com/addaix/ayn/actions/runs/45306296998">45306296998</a>           |
+| Run          | <a href="https://github.com/addaix/ayn/actions/runs/45327654050">45327654050</a>           |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>35c28b83661970a1445db1bc4a6e70c66fc4e942</code> (in the history of the built commit) |
+| Event commit | <code>bb6d744a405f2bd5e234bc58abac0df95221491a</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -2619,13 +2630,13 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/ayn/0.0.4/">0.0.4</a>, newer than the documented version (0.0.3).
+Latest release: <a href="https://pypi.org/project/ayn/0.0.4/">0.0.4</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/addaix/ayn && cd ayn
-git checkout 35c28b83661970a1445db1bc4a6e70c66fc4e942
+git checkout bb6d744a405f2bd5e234bc58abac0df95221491a
 pip install "epythet==0.2.25"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```

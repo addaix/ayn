@@ -174,10 +174,14 @@ Unified registry for searching and managing agents
 
 Aggregates results from multiple sources and provides a dict-like interface.
 
+Pass `searchers=[]` for a local-only registry, and a `cache_dir` to keep the
+cache out of `~/.ayn/registry`.
+
 ### Example
 
 ```pycon
->>> registry = AgentRegistry()
+>>> import tempfile
+>>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
 >>> # Add a local agent
 >>> from ayn.core import AgentMetadata, AgentFramework
 >>> meta = AgentMetadata(name="test", description="test", framework=AgentFramework.CUSTOM)
@@ -205,7 +209,8 @@ Search across all sources
 ### Example
 
 ```pycon
->>> registry = AgentRegistry(searchers=[])
+>>> import tempfile
+>>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
 >>> # Add some test data
 >>> from ayn.core import AgentMetadata, AgentFramework
 >>> registry['agent1'] = AgentMetadata(
@@ -623,7 +628,8 @@ Search registry and create agent controller
 ```pycon
 >>> from ayn import AgentRegistry
 >>> from ayn.core import AgentMetadata, AgentFramework
->>> registry = AgentRegistry(searchers=[])
+>>> import tempfile
+>>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
 >>> meta = AgentMetadata(name="test-agent", description="test", framework=AgentFramework.CUSTOM)
 >>> registry['test-agent'] = meta
 >>> controller = create_agent_from_registry(registry, 'test')

@@ -297,8 +297,12 @@
 
 <span class="sd">    Aggregates results from multiple sources and provides a dict-like interface.</span>
 
+<span class="sd">    Pass ``searchers=[]`` for a local-only registry, and a ``cache_dir`` to keep the</span>
+<span class="sd">    cache out of ``~/.ayn/registry``.</span>
+
 <span class="sd">    Example:</span>
-<span class="sd">        &gt;&gt;&gt; registry = AgentRegistry()</span>
+<span class="sd">        &gt;&gt;&gt; import tempfile</span>
+<span class="sd">        &gt;&gt;&gt; registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())</span>
 <span class="sd">        &gt;&gt;&gt; # Add a local agent</span>
 <span class="sd">        &gt;&gt;&gt; from ayn.core import AgentMetadata, AgentFramework</span>
 <span class="sd">        &gt;&gt;&gt; meta = AgentMetadata(name="test", description="test", framework=AgentFramework.CUSTOM)</span>
@@ -314,11 +318,16 @@
         <span class="n">searchers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">AgentSearcher</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">searchers</span> <span class="o">=</span> <span class="n">searchers</span> <span class="ow">or</span> <span class="p">[</span>
-            <span class="n">GitHubAgentSearcher</span><span class="p">(),</span>
-            <span class="n">HuggingFaceAgentSearcher</span><span class="p">(),</span>
-            <span class="n">AwesomeListSearcher</span><span class="p">(),</span>
-        <span class="p">]</span>
+        <span class="c1"># ``searchers=[]`` means local-only; only ``None`` gets the default searchers.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">searchers</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">searchers</span>
+            <span class="k">if</span> <span class="n">searchers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="p">[</span>
+                <span class="n">GitHubAgentSearcher</span><span class="p">(),</span>
+                <span class="n">HuggingFaceAgentSearcher</span><span class="p">(),</span>
+                <span class="n">AwesomeListSearcher</span><span class="p">(),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cache_dir</span> <span class="o">=</span> <span class="n">cache_dir</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">"~/.ayn/registry"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_local_store</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">AgentMetadata</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_load_cache</span><span class="p">()</span>
@@ -363,7 +372,8 @@
 <span class="sd">            List of agent metadata</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; registry = AgentRegistry(searchers=[])</span>
+<span class="sd">            &gt;&gt;&gt; import tempfile</span>
+<span class="sd">            &gt;&gt;&gt; registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())</span>
 <span class="sd">            &gt;&gt;&gt; # Add some test data</span>
 <span class="sd">            &gt;&gt;&gt; from ayn.core import AgentMetadata, AgentFramework</span>
 <span class="sd">            &gt;&gt;&gt; registry['agent1'] = AgentMetadata(</span>
@@ -454,7 +464,7 @@
       
     </aside>
   </div>
-</div><script src="../../../_static/documentation_options.js?v=7cc827d7"></script>
+</div><script src="../../../_static/documentation_options.js?v=94eb6667"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/scripts/furo.js?v=46bd48cc"></script>
