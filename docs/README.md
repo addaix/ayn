@@ -23,21 +23,17 @@ from ayn import AgentRegistry, BaseAgentController, export_agent_full_stack
 
 # 1. Search for agents
 registry = AgentRegistry()
-results = registry.search('data preparation')
+results = registry.search("data preparation")
 
 # 2. Create controller
 controller = BaseAgentController.from_metadata(results[0])
 
 # 3. Use the agent
-result = controller.invoke({'data': [1, 2, 3]})
+result = controller.invoke({"data": [1, 2, 3]})
 
 # 4. Export with all integrations
 artifacts = export_agent_full_stack(
-    controller, 
-    results[0],
-    export_fastapi=True,
-    export_mcp=True,
-    export_chatgpt=True
+    controller, results[0], export_fastapi=True, export_mcp=True, export_chatgpt=True
 )
 ```
 
@@ -99,7 +95,7 @@ metadata = AgentMetadata(
     framework=AgentFramework.CREWAI,
     tags=["data", "analysis"],
     capabilities=["pandas", "numpy"],
-    source="https://github.com/user/repo"
+    source="https://github.com/user/repo",
 )
 ```
 
@@ -113,15 +109,15 @@ from ayn import AgentRegistry
 registry = AgentRegistry()
 
 # Add agent
-registry['my-agent'] = metadata
+registry["my-agent"] = metadata
 
 # Search
-results = registry.search('data analysis')
+results = registry.search("data analysis")
 
 # Dict operations
 len(registry)  # Count
 list(registry)  # List names
-'my-agent' in registry  # Check existence
+"my-agent" in registry  # Check existence
 ```
 
 ### 3. AgentController
@@ -131,11 +127,7 @@ Standard interface for invoking agents:
 ```python
 from ayn import BaseAgentController, ControllerConfig
 
-config = ControllerConfig(
-    model="gpt-4",
-    temperature=0.7,
-    max_tokens=2000
-)
+config = ControllerConfig(model="gpt-4", temperature=0.7, max_tokens=2000)
 
 controller = BaseAgentController.from_metadata(metadata, config)
 
@@ -161,12 +153,7 @@ from ayn import export_as_fastapi
 # - GET /health
 # - GET /metadata
 
-export_as_fastapi(
-    controller, 
-    metadata,
-    host="0.0.0.0",
-    port=8000
-)
+export_as_fastapi(controller, metadata, host="0.0.0.0", port=8000)
 ```
 
 ### 5. MCP (Model Context Protocol)
@@ -204,16 +191,11 @@ from ayn import generate_chatgpt_action, generate_claude_mcp_config
 
 # ChatGPT Custom GPT
 chatgpt_config = generate_chatgpt_action(
-    controller,
-    metadata,
-    api_url="https://api.myagent.com"
+    controller, metadata, api_url="https://api.myagent.com"
 )
 
 # Claude Desktop MCP
-claude_config = generate_claude_mcp_config(
-    mcp_server,
-    "http://localhost:8000"
-)
+claude_config = generate_claude_mcp_config(mcp_server, "http://localhost:8000")
 ```
 
 ## 📚 Examples
@@ -223,25 +205,23 @@ claude_config = generate_claude_mcp_config(
 ```python
 from ayn import GenericController, AgentMetadata, AgentFramework
 
+
 class MyAgent(GenericController):
     def invoke(self, input_data, **kwargs):
         # Your custom logic here
         result = self.process(input_data)
-        return {
-            "status": "success",
-            "result": result,
-            "agent": self.metadata.name
-        }
-    
+        return {"status": "success", "result": result, "agent": self.metadata.name}
+
     def process(self, data):
         # Implementation
         return data
+
 
 # Create and use
 metadata = AgentMetadata(
     name="my-custom-agent",
     description="My custom agent",
-    framework=AgentFramework.CUSTOM
+    framework=AgentFramework.CUSTOM,
 )
 
 agent = MyAgent(metadata, ControllerConfig())
@@ -261,14 +241,14 @@ artifacts = export_agent_full_stack(
     api_port=8000,
     export_fastapi=True,
     export_mcp=True,
-    export_chatgpt=True
+    export_chatgpt=True,
 )
 
 # Access artifacts
-fastapi_app = artifacts['fastapi_app']
-mcp_server = artifacts['mcp_server']
-chatgpt_action = artifacts['chatgpt_action']
-claude_config = artifacts['claude_config']
+fastapi_app = artifacts["fastapi_app"]
+mcp_server = artifacts["mcp_server"]
+chatgpt_action = artifacts["chatgpt_action"]
+claude_config = artifacts["claude_config"]
 ```
 
 ### Example 3: Framework Integration
@@ -277,29 +257,23 @@ claude_config = artifacts['claude_config']
 # Integrating CrewAI
 from crewai import Crew, Agent, Task
 
+
 class CrewAIController(BaseAgentController):
     def __init__(self, metadata, config):
         super().__init__(config)
         self.metadata = metadata
-        
+
         # Setup CrewAI components
         self.agent = Agent(
-            role=metadata.description,
-            goal="Complete the task",
-            backstory="An AI agent"
+            role=metadata.description, goal="Complete the task", backstory="An AI agent"
         )
-        
-        self.crew = Crew(
-            agents=[self.agent],
-            tasks=[]
-        )
-    
+
+        self.crew = Crew(agents=[self.agent], tasks=[])
+
     def invoke(self, input_data, **kwargs):
-        task = Task(
-            description=input_data.get('description'),
-            agent=self.agent
-        )
+        task = Task(description=input_data.get("description"), agent=self.agent)
         return self.crew.kickoff(inputs=input_data)
+
 
 # Use it
 controller = CrewAIController(metadata, config)
@@ -313,12 +287,14 @@ result = controller.invoke({"description": "Analyze data"})
 ```python
 from ayn import AgentSearcher, AgentRegistry
 
+
 class MyCustomSearcher:
     def search(self, query, *, limit=20, **filters):
         # Your search logic
         results = []
         # ... search implementation
         return results
+
 
 registry = AgentRegistry(searchers=[MyCustomSearcher()])
 ```
@@ -333,27 +309,18 @@ resource = MCPResource(
     uri="file:///data/dataset.csv",
     name="Training Dataset",
     mimeType="text/csv",
-    description="Dataset for training"
+    description="Dataset for training",
 )
 
 # Add prompts
 prompt = MCPPrompt(
     name="analyze",
     description="Analyze data",
-    arguments=[
-        {
-            "name": "data",
-            "description": "Data to analyze",
-            "required": True
-        }
-    ]
+    arguments=[{"name": "data", "description": "Data to analyze", "required": True}],
 )
 
 mcp_server = controller_to_mcp_server(
-    controller,
-    metadata,
-    resources=[resource],
-    prompts=[prompt]
+    controller, metadata, resources=[resource], prompts=[prompt]
 )
 ```
 
@@ -366,6 +333,7 @@ class StreamingAgent(GenericController):
         for i in range(10):
             yield {"chunk": i, "data": f"Processing {i}"}
             time.sleep(0.1)
+
 
 # Use
 for chunk in agent.stream(input_data):

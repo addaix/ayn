@@ -11,14 +11,15 @@ from ayn import AgentRegistry, create_agent_from_registry
 
 # 1. Find an agent
 registry = AgentRegistry()
-results = registry.search('data preparation')
+results = registry.search("data preparation")
 
 # 2. Use it
-controller = create_agent_from_registry(registry, 'data prep')
-result = controller.invoke({'data': [1, 2, 3]})
+controller = create_agent_from_registry(registry, "data prep")
+result = controller.invoke({"data": [1, 2, 3]})
 
 # 3. Deploy everywhere
 from ayn import export_agent_full_stack
+
 artifacts = export_agent_full_stack(controller, results[0])
 # → FastAPI, MCP, ChatGPT, Claude all at once!
 ```
@@ -56,12 +57,13 @@ python -m doctest ayn.py -v
 ### 1. Search for Agents
 ```python
 registry = AgentRegistry()
-results = registry.search('code generation agents')
+results = registry.search("code generation agents")
 ```
 
 ### 2. Create Custom Agents
 ```python
 from ayn import GenericController
+
 
 class MyAgent(GenericController):
     def invoke(self, input_data, **kwargs):
@@ -72,6 +74,7 @@ class MyAgent(GenericController):
 ### 3. Export as API
 ```python
 from ayn import export_as_fastapi
+
 export_as_fastapi(controller, host="0.0.0.0", port=8000)
 # → /invoke, /stream, /health, /metadata
 ```
@@ -79,6 +82,7 @@ export_as_fastapi(controller, host="0.0.0.0", port=8000)
 ### 4. Add to Claude
 ```python
 from ayn import controller_to_mcp_server
+
 mcp_server = controller_to_mcp_server(controller, metadata)
 # → Copy config to Claude Desktop
 ```
@@ -86,6 +90,7 @@ mcp_server = controller_to_mcp_server(controller, metadata)
 ### 5. Use in ChatGPT
 ```python
 from ayn import generate_chatgpt_action
+
 action = generate_chatgpt_action(controller, metadata, api_url)
 # → Paste in ChatGPT Actions
 ```
@@ -119,11 +124,11 @@ action = generate_chatgpt_action(controller, metadata, api_url)
 ### Use Case 1: Find and Use
 ```python
 # Find an agent
-results = registry.search('sentiment analysis')
+results = registry.search("sentiment analysis")
 
 # Use it
-controller = create_agent_from_registry(registry, 'sentiment')
-result = controller.invoke({'text': 'I love this!'})
+controller = create_agent_from_registry(registry, "sentiment")
+result = controller.invoke({"text": "I love this!"})
 ```
 
 ### Use Case 2: Build and Deploy
@@ -131,7 +136,8 @@ result = controller.invoke({'text': 'I love this!'})
 # Build custom agent
 class SentimentAgent(GenericController):
     def invoke(self, input_data, **kwargs):
-        return analyze_sentiment(input_data['text'])
+        return analyze_sentiment(input_data["text"])
+
 
 # Deploy everywhere
 artifacts = export_agent_full_stack(agent, metadata)
@@ -140,7 +146,7 @@ artifacts = export_agent_full_stack(agent, metadata)
 ### Use Case 3: Multi-Platform
 ```python
 # Same agent, multiple platforms
-export_as_fastapi(agent)        # API
+export_as_fastapi(agent)  # API
 mcp_server = create_mcp(agent)  # Claude
 chatgpt = create_action(agent)  # ChatGPT
 ```

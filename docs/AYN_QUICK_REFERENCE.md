@@ -7,7 +7,7 @@
 from ayn import AgentRegistry, create_agent_from_registry
 
 registry = AgentRegistry()
-controller = create_agent_from_registry(registry, 'search query')
+controller = create_agent_from_registry(registry, "search query")
 result = controller.invoke(input_data)
 ```
 
@@ -19,16 +19,17 @@ metadata = AgentMetadata(
     name="my-agent",
     description="What it does",
     framework=AgentFramework.CUSTOM,
-    tags=["tag1", "tag2"]
+    tags=["tag1", "tag2"],
 )
 
 registry = AgentRegistry()
-registry['my-agent'] = metadata
+registry["my-agent"] = metadata
 ```
 
 ### Pattern 3: Create Custom Controller
 ```python
 from ayn import GenericController
+
 
 class MyController(GenericController):
     def invoke(self, input_data, **kwargs):
@@ -67,17 +68,14 @@ mcp_server = controller_to_mcp_server(
 from ayn import export_agent_full_stack
 
 artifacts = export_agent_full_stack(
-    controller, metadata,
-    export_fastapi=True,
-    export_mcp=True,
-    export_chatgpt=True
+    controller, metadata, export_fastapi=True, export_mcp=True, export_chatgpt=True
 )
 
 # Access:
-fastapi_app = artifacts['fastapi_app']
-mcp_server = artifacts['mcp_server']
-chatgpt_config = artifacts['chatgpt_action']
-claude_config = artifacts['claude_config']
+fastapi_app = artifacts["fastapi_app"]
+mcp_server = artifacts["mcp_server"]
+chatgpt_config = artifacts["chatgpt_action"]
+claude_config = artifacts["claude_config"]
 ```
 
 ### Pattern 7: Framework Integration
@@ -102,11 +100,12 @@ class CrewAIController(BaseAgentController):
 from langchain.agents import AgentExecutor
 from ayn import BaseAgentController
 
+
 class LangChainController(BaseAgentController):
     def __init__(self, metadata, config):
         super().__init__(config)
         self.executor = AgentExecutor(...)
-    
+
     def invoke(self, input_data, **kwargs):
         return self.executor.invoke(input_data)
 ```
@@ -129,17 +128,14 @@ metadata = AgentMetadata(
     name="data-analyst",
     description="Analyzes data and provides insights",
     framework=AgentFramework.CUSTOM,
-    capabilities=["pandas", "statistics", "visualization"]
+    capabilities=["pandas", "statistics", "visualization"],
 )
+
 
 class DataAnalyst(GenericController):
     def invoke(self, input_data, **kwargs):
-        data = input_data['data']
-        return {
-            "mean": sum(data)/len(data),
-            "max": max(data),
-            "min": min(data)
-        }
+        data = input_data["data"]
+        return {"mean": sum(data) / len(data), "max": max(data), "min": min(data)}
 ```
 
 ### Use Case 2: RAG Agent
@@ -148,12 +144,13 @@ metadata = AgentMetadata(
     name="rag-agent",
     description="Retrieval-augmented generation for Q&A",
     framework=AgentFramework.LANGCHAIN,
-    capabilities=["vector-search", "embeddings", "llm"]
+    capabilities=["vector-search", "embeddings", "llm"],
 )
+
 
 class RAGController(LangChainController):
     def invoke(self, input_data, **kwargs):
-        query = input_data['query']
+        query = input_data["query"]
         # Retrieve relevant docs
         docs = self.retriever.get_relevant_documents(query)
         # Generate answer
@@ -166,21 +163,21 @@ metadata = AgentMetadata(
     name="code-gen",
     description="Generates code from natural language",
     framework=AgentFramework.AUTOGEN,
-    capabilities=["code-generation", "python", "testing"]
+    capabilities=["code-generation", "python", "testing"],
 )
 ```
 
 ### Use Case 4: Multi-Agent System
 ```python
 # Register multiple agents
-registry['analyst'] = analyst_metadata
-registry['coder'] = coder_metadata
-registry['reviewer'] = reviewer_metadata
+registry["analyst"] = analyst_metadata
+registry["coder"] = coder_metadata
+registry["reviewer"] = reviewer_metadata
 
 # Create controllers
-analyst = create_agent_from_registry(registry, 'analyst')
-coder = create_agent_from_registry(registry, 'coder')
-reviewer = create_agent_from_registry(registry, 'reviewer')
+analyst = create_agent_from_registry(registry, "analyst")
+coder = create_agent_from_registry(registry, "coder")
+reviewer = create_agent_from_registry(registry, "reviewer")
 
 # Use in sequence
 analysis = analyst.invoke(data)
@@ -301,7 +298,7 @@ export AYN_REGISTRY_DIR="~/.ayn/registry"
 print(list(registry.keys()))
 
 # Search with different query
-results = registry.search('alternative query')
+results = registry.search("alternative query")
 ```
 
 ### Issue: Controller error

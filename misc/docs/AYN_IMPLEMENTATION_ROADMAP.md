@@ -44,20 +44,14 @@ class GitHubAgentSearcher:
 class HuggingFaceAgentSearcher:
     def __init__(self, hf_token):
         self.api = HfApi(token=hf_token)
-    
+
     def search(self, query, *, limit=20, **filters):
         # Search models
-        models = self.api.list_models(
-            search=f"{query} agent",
-            limit=limit
-        )
-        
+        models = self.api.list_models(search=f"{query} agent", limit=limit)
+
         # Search spaces
-        spaces = self.api.list_spaces(
-            search=f"{query} agent",
-            limit=limit
-        )
-        
+        spaces = self.api.list_spaces(search=f"{query} agent", limit=limit)
+
         # Convert to AgentMetadata
         for item in chain(models, spaces):
             yield self._to_metadata(item)
@@ -113,44 +107,34 @@ class AwesomeListSearcher:
 ```python
 from crewai import Crew, Agent, Task, Process
 
+
 class CrewAIController(BaseAgentController):
     def __init__(self, metadata, config):
         super().__init__(config)
         self.metadata = metadata
-        
+
         # Load crew configuration
         crew_config = self._load_crew_config(metadata.source)
-        
+
         # Initialize agents
-        self.agents = [
-            Agent(**agent_config) 
-            for agent_config in crew_config['agents']
-        ]
-        
+        self.agents = [Agent(**agent_config) for agent_config in crew_config["agents"]]
+
         # Initialize crew
-        self.crew = Crew(
-            agents=self.agents,
-            process=Process.sequential,
-            verbose=True
-        )
-    
+        self.crew = Crew(agents=self.agents, process=Process.sequential, verbose=True)
+
     def invoke(self, input_data, **kwargs):
         # Create tasks from input
         tasks = self._create_tasks(input_data)
-        
+
         # Run crew
         result = self.crew.kickoff(inputs=input_data)
-        
-        return {
-            "status": "success",
-            "result": result,
-            "agent": self.metadata.name
-        }
-    
+
+        return {"status": "success", "result": result, "agent": self.metadata.name}
+
     def _load_crew_config(self, source):
         # Load crew.yaml or config from source
         pass
-    
+
     def _create_tasks(self, input_data):
         # Convert input to CrewAI tasks
         pass
@@ -165,40 +149,35 @@ class CrewAIController(BaseAgentController):
 from langchain.agents import AgentExecutor, create_react_agent
 from langchain.tools import Tool
 
+
 class LangChainController(BaseAgentController):
     def __init__(self, metadata, config):
         super().__init__(config)
-        
+
         # Load LangChain agent
         agent_config = self._load_agent_config(metadata.source)
-        
+
         # Create tools
         tools = [
-            Tool(name=t['name'], func=t['func'], description=t['desc'])
-            for t in agent_config['tools']
+            Tool(name=t["name"], func=t["func"], description=t["desc"])
+            for t in agent_config["tools"]
         ]
-        
+
         # Create agent
         self.agent = create_react_agent(
-            llm=self._get_llm(config),
-            tools=tools,
-            prompt=agent_config['prompt']
+            llm=self._get_llm(config), tools=tools, prompt=agent_config["prompt"]
         )
-        
-        self.executor = AgentExecutor(
-            agent=self.agent,
-            tools=tools,
-            verbose=True
-        )
-    
+
+        self.executor = AgentExecutor(agent=self.agent, tools=tools, verbose=True)
+
     def invoke(self, input_data, **kwargs):
         result = self.executor.invoke(input_data)
         return result
-    
+
     async def ainvoke(self, input_data, **kwargs):
         result = await self.executor.ainvoke(input_data)
         return result
-    
+
     def stream(self, input_data, **kwargs):
         for chunk in self.executor.stream(input_data):
             yield chunk
@@ -212,37 +191,31 @@ class LangChainController(BaseAgentController):
 ```python
 from autogen import AssistantAgent, UserProxyAgent, GroupChat
 
+
 class AutoGenController(BaseAgentController):
     def __init__(self, metadata, config):
         super().__init__(config)
-        
+
         # Create assistant
         self.assistant = AssistantAgent(
-            name="assistant",
-            llm_config=self._get_llm_config(config)
+            name="assistant", llm_config=self._get_llm_config(config)
         )
-        
+
         # Create user proxy
         self.user_proxy = UserProxyAgent(
             name="user_proxy",
             human_input_mode="NEVER",
-            code_execution_config={"use_docker": False}
+            code_execution_config={"use_docker": False},
         )
-    
+
     def invoke(self, input_data, **kwargs):
-        message = input_data.get('message', '')
-        
+        message = input_data.get("message", "")
+
         # Initiate chat
-        self.user_proxy.initiate_chat(
-            self.assistant,
-            message=message
-        )
-        
+        self.user_proxy.initiate_chat(self.assistant, message=message)
+
         # Get response
-        return {
-            "status": "success",
-            "messages": self.user_proxy.chat_messages
-        }
+        return {"status": "success", "messages": self.user_proxy.chat_messages}
 ```
 
 **Dependencies**: `pip install pyautogen`
@@ -255,24 +228,25 @@ class AutoGenController(BaseAgentController):
 ```python
 from fastapi.security import HTTPBearer, OAuth2PasswordBearer
 
+
 def _create_fastapi_app_with_auth(controller, metadata, auth_type="bearer"):
     app = FastAPI(...)
-    
+
     if auth_type == "bearer":
         security = HTTPBearer()
-        
+
         @app.post("/invoke")
         async def invoke(
             request: InvokeRequest,
-            credentials: HTTPAuthorizationCredentials = Depends(security)
+            credentials: HTTPAuthorizationCredentials = Depends(security),
         ):
             # Verify token
             if not verify_token(credentials.credentials):
                 raise HTTPException(401, "Invalid token")
-            
+
             result = await controller.ainvoke(request.input_data)
             return {"result": result}
-    
+
     return app
 ```
 
@@ -281,6 +255,7 @@ def _create_fastapi_app_with_auth(controller, metadata, auth_type="bearer"):
 ### 3.2 OpenAPI Enhancement with oa package
 ```python
 from oa import api  # Use your package!
+
 
 def _generate_openapi_spec_enhanced(controller, metadata):
     # Use oa package for better spec generation
@@ -295,7 +270,7 @@ def _generate_openapi_spec_enhanced(controller, metadata):
                 "function": controller.invoke,
                 # oa will introspect function signature
             }
-        ]
+        ],
     )
     return spec
 ```
@@ -309,21 +284,22 @@ def _generate_openapi_spec_enhanced(controller, metadata):
 from langserve import add_routes
 from langchain.schema.runnable import RunnableLambda
 
+
 def export_as_langserve_full(controller, metadata):
     app = FastAPI()
-    
+
     # Wrap controller as Runnable
     runnable = RunnableLambda(controller.invoke)
-    
+
     # Add with all LangServe features
     add_routes(
         app,
         runnable,
         path="/agent",
         enabled_endpoints=["invoke", "batch", "stream", "stream_log"],
-        config_keys=["metadata", "tags"]
+        config_keys=["metadata", "tags"],
     )
-    
+
     return app
 ```
 
@@ -335,21 +311,22 @@ def export_as_langserve_full(controller, metadata):
 ```python
 import uv  # or use subprocess
 
+
 class AgentInstaller:
     def install(self, metadata: AgentMetadata):
         # Clone repo
         repo_path = self._clone_repo(metadata.source)
-        
+
         # Install dependencies with uv
         self._install_dependencies(repo_path)
-        
+
         # Register locally
         self._register_local(metadata, repo_path)
-    
+
     def _clone_repo(self, url):
         # Use graze or git
         pass
-    
+
     def _install_dependencies(self, path):
         # Use uv for faster installation
         subprocess.run(["uv", "pip", "install", "-r", f"{path}/requirements.txt"])
@@ -388,11 +365,11 @@ class StreamingMCPServer(MCPServer):
         """Stream tool results"""
         for tool in self.tools:
             if tool.name == tool_name:
-                if hasattr(tool.handler, '__aiter__'):
+                if hasattr(tool.handler, "__aiter__"):
                     async for chunk in tool.handler(**arguments):
                         yield {
                             "type": "content",
-                            "content": [{"type": "text", "text": str(chunk)}]
+                            "content": [{"type": "text", "text": str(chunk)}],
                         }
 ```
 
@@ -415,18 +392,19 @@ class BidirectionalMCPServer(MCPServer):
 ```python
 from dol import TextFiles  # Use your package!
 
+
 class AgentLogger:
     def __init__(self, agent_name):
         self.store = TextFiles(f"~/.ayn/logs/{agent_name}")
-    
+
     def log_invocation(self, input_data, output, metadata):
         log_entry = {
             "timestamp": datetime.now().isoformat(),
             "input": input_data,
             "output": output,
-            "metadata": metadata
+            "metadata": metadata,
         }
-        
+
         key = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
         self.store[key] = json.dumps(log_entry)
 ```
@@ -443,9 +421,9 @@ class PerformanceTracker:
         metrics = {
             "duration_ms": duration,
             "tokens_used": tokens,
-            "estimated_cost": cost
+            "estimated_cost": cost,
         }
-        
+
         # Store in time series DB
         self._store_metrics(agent_name, metrics)
 ```
@@ -491,6 +469,7 @@ logs = TextFiles("~/.ayn/logs")
 ```python
 from i2 import Sig, wrap
 
+
 # Adapt agent signatures dynamically
 @wrap(input_mapper=..., output_mapper=...)
 def invoke(self, input_data):
@@ -511,11 +490,7 @@ repo_content = graze("https://github.com/user/repo/archive/main.zip")
 from meshed import DAG
 
 # Multi-agent pipeline
-dag = DAG([
-    agent1.invoke,
-    agent2.invoke,
-    agent3.invoke
-])
+dag = DAG([agent1.invoke, agent2.invoke, agent3.invoke])
 
 result = dag(input_data)
 ```
@@ -536,15 +511,17 @@ spec = api.generate_spec(...)
 import pytest
 from ayn import AgentRegistry, GenericController
 
+
 def test_registry_add():
     registry = AgentRegistry(searchers=[])
-    registry['test'] = metadata
-    assert 'test' in registry
+    registry["test"] = metadata
+    assert "test" in registry
+
 
 def test_controller_invoke():
     controller = GenericController(metadata, config)
-    result = controller.invoke({'test': 'data'})
-    assert result['status'] == 'success'
+    result = controller.invoke({"test": "data"})
+    assert result["status"] == "success"
 ```
 
 ### Integration Tests
@@ -552,10 +529,10 @@ def test_controller_invoke():
 def test_full_workflow():
     # Registry -> Search -> Controller -> Export
     registry = AgentRegistry()
-    results = registry.search('test')
-    controller = create_agent_from_registry(registry, 'test')
+    results = registry.search("test")
+    controller = create_agent_from_registry(registry, "test")
     artifacts = export_agent_full_stack(controller, results[0])
-    assert 'fastapi_app' in artifacts
+    assert "fastapi_app" in artifacts
 ```
 
 ## Documentation Needs

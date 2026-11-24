@@ -60,7 +60,7 @@ I've created **AYN (Agents You Need)** - a comprehensive meta-framework for AI a
 ### 1. Unified Agent Discovery
 ```python
 registry = AgentRegistry()
-results = registry.search('data preparation agents')
+results = registry.search("data preparation agents")
 # Searches GitHub, HuggingFace, awesome lists
 ```
 
@@ -74,10 +74,7 @@ result = controller.invoke(input_data)
 ### 3. One-Command Export
 ```python
 artifacts = export_agent_full_stack(
-    controller, metadata,
-    export_fastapi=True,
-    export_mcp=True,
-    export_chatgpt=True
+    controller, metadata, export_fastapi=True, export_mcp=True, export_chatgpt=True
 )
 # Generates FastAPI app, MCP server, ChatGPT action
 ```
@@ -141,17 +138,19 @@ claude_config = generate_claude_mcp_config(mcp_server, server_url)
 from ayn import AgentRegistry, create_agent_from_registry
 
 registry = AgentRegistry()
-controller = create_agent_from_registry(registry, 'data prep')
-result = controller.invoke({'data': [1,2,3]})
+controller = create_agent_from_registry(registry, "data prep")
+result = controller.invoke({"data": [1, 2, 3]})
 ```
 
 ### Example 2: Custom Agent
 ```python
 from ayn import GenericController, AgentMetadata
 
+
 class MyAgent(GenericController):
     def invoke(self, input_data, **kwargs):
         return {"processed": input_data}
+
 
 agent = MyAgent(metadata, config)
 ```
