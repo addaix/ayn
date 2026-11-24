@@ -32,3 +32,14 @@ def test_registry_search_warns_and_still_finds_local_agents(tmp_path):
         none = registry.search("zzz-nothing-matches")
     assert [m.name for m in found] == ["mine"]
     assert none == []
+
+
+def test_empty_searchers_means_no_remote_search(tmp_path):
+    """``searchers=[]`` asks for a local-only registry, not for the default stubs."""
+    import warnings
+
+    registry = AgentRegistry(searchers=[], cache_dir=str(tmp_path))
+    assert registry.searchers == []
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        assert registry.search("anything") == []

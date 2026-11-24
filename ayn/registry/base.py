@@ -22,8 +22,12 @@ class AgentRegistry(MutableMapping[str, AgentMetadata]):
 
     Aggregates results from multiple sources and provides a dict-like interface.
 
+    Pass ``searchers=[]`` for a local-only registry, and a ``cache_dir`` to keep the
+    cache out of ``~/.ayn/registry``.
+
     Example:
-        >>> registry = AgentRegistry()
+        >>> import tempfile
+        >>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
         >>> # Add a local agent
         >>> from ayn.core import AgentMetadata, AgentFramework
         >>> meta = AgentMetadata(name="test", description="test", framework=AgentFramework.CUSTOM)
@@ -39,11 +43,16 @@ class AgentRegistry(MutableMapping[str, AgentMetadata]):
         searchers: Optional[List[AgentSearcher]] = None,
         cache_dir: Optional[str] = None,
     ):
-        self.searchers = searchers or [
-            GitHubAgentSearcher(),
-            HuggingFaceAgentSearcher(),
-            AwesomeListSearcher(),
-        ]
+        # ``searchers=[]`` means local-only; only ``None`` gets the default searchers.
+        self.searchers = (
+            searchers
+            if searchers is not None
+            else [
+                GitHubAgentSearcher(),
+                HuggingFaceAgentSearcher(),
+                AwesomeListSearcher(),
+            ]
+        )
         self.cache_dir = cache_dir or os.path.expanduser("~/.ayn/registry")
         self._local_store: Dict[str, AgentMetadata] = {}
         self._load_cache()
@@ -86,7 +95,8 @@ class AgentRegistry(MutableMapping[str, AgentMetadata]):
             List of agent metadata
 
         Example:
-            >>> registry = AgentRegistry(searchers=[])
+            >>> import tempfile
+            >>> registry = AgentRegistry(searchers=[], cache_dir=tempfile.mkdtemp())
             >>> # Add some test data
             >>> from ayn.core import AgentMetadata, AgentFramework
             >>> registry['agent1'] = AgentMetadata(
