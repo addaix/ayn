@@ -296,6 +296,9 @@
 <li><p><strong>MCP Support</strong> for Model Context Protocol integration</p></li>
 <li><p><strong>Custom Actions</strong> for ChatGPT and Claude</p></li>
 </ol>
+<blockquote>
+<div><p><strong>Status: early.</strong> The registry, the controller interface and the FastAPI/MCP/ChatGPT exports work. <strong>The GitHub, Hugging Face and awesome-list searchers are not implemented</strong> (they raise <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code>, and <code class="docutils literal notranslate"><span class="pre">AgentRegistry.search</span></code> warns and skips them), and <strong>the CrewAI/LangChain/AutoGen controllers are placeholders</strong> that echo their input like the generic controller. See the roadmap below. Today <code class="docutils literal notranslate"><span class="pre">registry.search</span></code> finds agents you registered yourself.</p>
+</div></blockquote>
 </section>
 <section id="quick-start">
 <span id="-quick-start"></span><h2>🚀 Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
@@ -341,11 +344,11 @@ pip<span class="w"> </span>install<span class="w"> </span>ayn<span class="o">[</
 <section id="documentation">
 <span id="-documentation"></span><h2>📚 Documentation<a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><strong><a class="reference internal" href="#docs/GETTING_STARTED.md"><span class="xref myst">Getting Started</span></a></strong> - Quick introduction and setup</p></li>
-<li><p><strong><a class="reference internal" href="#docs/README.md"><span class="xref myst">README</span></a></strong> - Complete documentation</p></li>
-<li><p><strong><a class="reference internal" href="#docs/API_REFERENCE.md"><span class="xref myst">API Reference</span></a></strong> - Detailed API documentation</p></li>
-<li><p><strong><a class="reference internal" href="#docs/AYN_QUICK_REFERENCE.md"><span class="xref myst">Quick Reference</span></a></strong> - Common patterns and snippets</p></li>
-<li><p><strong><a class="reference internal" href="#docs/AYN_IMPLEMENTATION_ROADMAP.md"><span class="xref myst">Implementation Roadmap</span></a></strong> - Future development plans</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/addaix/ayn/blob/HEAD/docs/GETTING_STARTED.md"><span class="xref myst">Getting Started</span></a></strong> - Quick introduction and setup</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/addaix/ayn/blob/HEAD/docs/README.md"><span class="xref myst">README</span></a></strong> - Complete documentation</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/addaix/ayn/blob/HEAD/docs/API_REFERENCE.md"><span class="xref myst">API Reference</span></a></strong> - Detailed API documentation</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/addaix/ayn/blob/HEAD/docs/AYN_QUICK_REFERENCE.md"><span class="xref myst">Quick Reference</span></a></strong> - Common patterns and snippets</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/addaix/ayn/blob/HEAD/docs/AYN_IMPLEMENTATION_ROADMAP.md"><span class="xref myst">Implementation Roadmap</span></a></strong> - Future development plans</p></li>
 </ul>
 </section>
 <section id="architecture">
@@ -379,10 +382,10 @@ pip<span class="w"> </span>install<span class="w"> </span>ayn<span class="o">[</
 <span id="-examples"></span><h2>🎓 Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
 <p>See the <a class="reference internal" href="#examples/"><span class="xref myst">examples/</span></a> directory for complete working examples:</p>
 <ul class="simple">
-<li><p><strong><a class="reference internal" href="#examples/basic_usage.py"><span class="xref myst">basic_usage.py</span></a></strong> - Basic registry and controller usage</p></li>
-<li><p><strong><a class="reference internal" href="#examples/fastapi_deployment.py"><span class="xref myst">fastapi_deployment.py</span></a></strong> - Deploy as HTTP API</p></li>
-<li><p><strong><a class="reference internal" href="#examples/mcp_integration.py"><span class="xref myst">mcp_integration.py</span></a></strong> - MCP protocol integration</p></li>
-<li><p><strong><a class="reference internal" href="#examples/tutorial.py"><span class="xref myst">tutorial.py</span></a></strong> - Comprehensive tutorial</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/addaix/ayn/blob/HEAD/examples/basic_usage.py"><span class="xref myst">basic_usage.py</span></a></strong> - Basic registry and controller usage</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/addaix/ayn/blob/HEAD/examples/fastapi_deployment.py"><span class="xref myst">fastapi_deployment.py</span></a></strong> - Deploy as HTTP API</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/addaix/ayn/blob/HEAD/examples/mcp_integration.py"><span class="xref myst">mcp_integration.py</span></a></strong> - MCP protocol integration</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/addaix/ayn/blob/HEAD/examples/tutorial.py"><span class="xref myst">tutorial.py</span></a></strong> - Comprehensive tutorial</p></li>
 </ul>
 </section>
 <section id="roadmap">
@@ -423,7 +426,7 @@ pip<span class="w"> </span>install<span class="w"> </span>ayn<span class="o">[</
 <li><p>⬜ AutoGen integration</p></li>
 <li><p>⬜ SmolAgents integration</p></li>
 </ul>
-<p>See <a class="reference internal" href="#docs/AYN_IMPLEMENTATION_ROADMAP.md"><span class="xref myst">AYN_IMPLEMENTATION_ROADMAP.md</span></a> for detailed plans.</p>
+<p>See <a class="reference external" href="https://github.com/addaix/ayn/blob/HEAD/docs/AYN_IMPLEMENTATION_ROADMAP.md"><span class="xref myst">AYN_IMPLEMENTATION_ROADMAP.md</span></a> for detailed plans.</p>
 </section>
 </section>
 <section id="contributing">
@@ -439,7 +442,7 @@ pip<span class="w"> </span>install<span class="w"> </span>ayn<span class="o">[</
 </section>
 <section id="license">
 <span id="-license"></span><h2>📄 License<a class="headerlink" href="#license" title="Link to this heading">¶</a></h2>
-<p>MIT License - see <a class="reference internal" href="#LICENSE"><span class="xref myst">LICENSE</span></a> file</p>
+<p>MIT License - see <a class="reference external" href="https://github.com/addaix/ayn/blob/HEAD/LICENSE"><span class="xref myst">LICENSE</span></a> file</p>
 </section>
 <section id="acknowledgments">
 <span id="-acknowledgments"></span><h2>🙏 Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">¶</a></h2>
@@ -457,7 +460,7 @@ pip<span class="w"> </span>install<span class="w"> </span>ayn<span class="o">[</
 </section>
 </section>
 
-<p class="epythet-provenance" style="font-size:.8em;opacity:.65;margin-top:2.5em;text-align:right">built 2026-11-22 14:03 UTC from <a href="https://github.com/addaix/ayn/commit/6b951fcacee05a6751425099e19b78c017eb3ba8">6b951fc</a> (main) · ayn 0.0.3 · <a href="about-this-build.html">about this build</a></p>
+<p class="epythet-provenance" style="font-size:.8em;opacity:.65;margin-top:2.5em;text-align:right">built 2026-11-24 01:37 UTC from <a href="https://github.com/addaix/ayn/commit/35c28b83661970a1445db1bc4a6e70c66fc4e942">35c28b8</a> (main) · ayn 0.0.3 · <a href="about-this-build.html">about this build</a></p>
         </article>
       </div>
       <footer>

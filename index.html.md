@@ -19,6 +19,8 @@ AYN solves the agent discovery and integration problem by providing:
 4. **MCP Support** for Model Context Protocol integration
 5. **Custom Actions** for ChatGPT and Claude
 
+> **Status: early.** The registry, the controller interface and the FastAPI/MCP/ChatGPT exports work. **The GitHub, Hugging Face and awesome-list searchers are not implemented** (they raise `NotImplementedError`, and `AgentRegistry.search` warns and skips them), and **the CrewAI/LangChain/AutoGen controllers are placeholders** that echo their input like the generic controller. See the roadmap below. Today `registry.search` finds agents you registered yourself.
+
 ## 🚀 Quick Start
 
 ```python

@@ -242,6 +242,10 @@ Bases: [`GenericController`](ayn.controllers.generic.html.md#ayn.controllers.gen
 
 Controller for AutoGen agents
 
+Not implemented yet: today this behaves exactly like [`GenericController`](#ayn.GenericController)
+(it echoes its input) and does not run an AutoGen agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
+
 ### *class* ayn.AwesomeListSearcher
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
@@ -340,6 +344,10 @@ Bases: [`GenericController`](ayn.controllers.generic.html.md#ayn.controllers.gen
 
 Controller for CrewAI agents
 
+Not implemented yet: today this behaves exactly like [`GenericController`](#ayn.GenericController)
+(it echoes its input) and does not run a CrewAI agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
+
 ### *class* ayn.GenericController(metadata, config)
 
 Bases: [`BaseAgentController`](ayn.controllers.base.html.md#ayn.controllers.base.BaseAgentController)
@@ -377,7 +385,7 @@ Search for agents in GitHub repositories
 
 #### search(query, , limit=20, \*\*filters)
 
-Search GitHub for agent repos
+Search GitHub for agent repos (not implemented: raises `NotImplementedError`)
 
 * **Return type:**
   [`Iterable`](https://docs.python.org/3/library/typing.html#typing.Iterable)[[`AgentMetadata`](ayn.core.models.html.md#ayn.core.models.AgentMetadata)]
@@ -409,6 +417,10 @@ Search Hugging Face for agents
 Bases: [`GenericController`](ayn.controllers.generic.html.md#ayn.controllers.generic.GenericController)
 
 Controller for LangChain agents
+
+Not implemented yet: today this behaves exactly like [`GenericController`](#ayn.GenericController)
+(it echoes its input) and does not run a LangChain agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
 
 ### *class* ayn.MCPPrompt(name, description, arguments=list())
 

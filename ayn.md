@@ -1,4 +1,4 @@
-> built 2026-11-22 14:03 UTC from 6b951fc (main) · ayn 0.0.3. Details: build_info.json
+> built 2026-11-24 01:37 UTC from 35c28b8 (main) · ayn 0.0.3. Details: build_info.json
 
 # index.html.md
 
@@ -22,6 +22,8 @@ AYN solves the agent discovery and integration problem by providing:
 3. **HTTP/REST Export** via FastAPI and LangServe
 4. **MCP Support** for Model Context Protocol integration
 5. **Custom Actions** for ChatGPT and Claude
+
+> **Status: early.** The registry, the controller interface and the FastAPI/MCP/ChatGPT exports work. **The GitHub, Hugging Face and awesome-list searchers are not implemented** (they raise `NotImplementedError`, and `AgentRegistry.search` warns and skips them), and **the CrewAI/LangChain/AutoGen controllers are placeholders** that echo their input like the generic controller. See the roadmap below. Today `registry.search` finds agents you registered yourself.
 
 ## 🚀 Quick Start
 
@@ -436,17 +438,29 @@ Bases: [`GenericController`](_autosummary/ayn.controllers.generic.html.md#ayn.co
 
 Controller for AutoGen agents
 
+Not implemented yet: today this behaves exactly like `GenericController`
+(it echoes its input) and does not run an AutoGen agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
+
 ### *class* ayn.controllers.framework.CrewAIController(metadata, config)
 
 Bases: [`GenericController`](_autosummary/ayn.controllers.generic.html.md#ayn.controllers.generic.GenericController)
 
 Controller for CrewAI agents
 
+Not implemented yet: today this behaves exactly like `GenericController`
+(it echoes its input) and does not run a CrewAI agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
+
 ### *class* ayn.controllers.framework.LangChainController(metadata, config)
 
 Bases: [`GenericController`](_autosummary/ayn.controllers.generic.html.md#ayn.controllers.generic.GenericController)
 
 Controller for LangChain agents
+
+Not implemented yet: today this behaves exactly like `GenericController`
+(it echoes its input) and does not run a LangChain agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
 
 
 # _autosummary/ayn.controllers.generic.html.md
@@ -553,6 +567,10 @@ Bases: [`GenericController`](_autosummary/ayn.controllers.generic.html.md#ayn.co
 
 Controller for AutoGen agents
 
+Not implemented yet: today this behaves exactly like [`GenericController`](_autosummary/ayn.controllers.html.md#ayn.controllers.GenericController)
+(it echoes its input) and does not run an AutoGen agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
+
 ### *class* ayn.controllers.BaseAgentController(config)
 
 Bases: [`ABC`](https://docs.python.org/3/library/abc.html#abc.ABC)
@@ -606,6 +624,10 @@ Bases: [`GenericController`](_autosummary/ayn.controllers.generic.html.md#ayn.co
 
 Controller for CrewAI agents
 
+Not implemented yet: today this behaves exactly like [`GenericController`](_autosummary/ayn.controllers.html.md#ayn.controllers.GenericController)
+(it echoes its input) and does not run a CrewAI agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
+
 ### *class* ayn.controllers.GenericController(metadata, config)
 
 Bases: [`BaseAgentController`](_autosummary/ayn.controllers.base.html.md#ayn.controllers.base.BaseAgentController)
@@ -633,6 +655,10 @@ Generic invoke - subclasses override for specific behavior
 Bases: [`GenericController`](_autosummary/ayn.controllers.generic.html.md#ayn.controllers.generic.GenericController)
 
 Controller for LangChain agents
+
+Not implemented yet: today this behaves exactly like [`GenericController`](_autosummary/ayn.controllers.html.md#ayn.controllers.GenericController)
+(it echoes its input) and does not run a LangChain agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
 
 ### Modules
 
@@ -1210,6 +1236,10 @@ Bases: [`GenericController`](_autosummary/ayn.controllers.generic.html.md#ayn.co
 
 Controller for AutoGen agents
 
+Not implemented yet: today this behaves exactly like [`GenericController`](_autosummary/ayn.html.md#ayn.GenericController)
+(it echoes its input) and does not run an AutoGen agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
+
 ### *class* ayn.AwesomeListSearcher
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
@@ -1308,6 +1338,10 @@ Bases: [`GenericController`](_autosummary/ayn.controllers.generic.html.md#ayn.co
 
 Controller for CrewAI agents
 
+Not implemented yet: today this behaves exactly like [`GenericController`](_autosummary/ayn.html.md#ayn.GenericController)
+(it echoes its input) and does not run a CrewAI agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
+
 ### *class* ayn.GenericController(metadata, config)
 
 Bases: [`BaseAgentController`](_autosummary/ayn.controllers.base.html.md#ayn.controllers.base.BaseAgentController)
@@ -1345,7 +1379,7 @@ Search for agents in GitHub repositories
 
 #### search(query, , limit=20, \*\*filters)
 
-Search GitHub for agent repos
+Search GitHub for agent repos (not implemented: raises `NotImplementedError`)
 
 * **Return type:**
   [`Iterable`](https://docs.python.org/3/library/typing.html#typing.Iterable)[[`AgentMetadata`](_autosummary/ayn.core.models.html.md#ayn.core.models.AgentMetadata)]
@@ -1377,6 +1411,10 @@ Search Hugging Face for agents
 Bases: [`GenericController`](_autosummary/ayn.controllers.generic.html.md#ayn.controllers.generic.GenericController)
 
 Controller for LangChain agents
+
+Not implemented yet: today this behaves exactly like [`GenericController`](_autosummary/ayn.html.md#ayn.GenericController)
+(it echoes its input) and does not run a LangChain agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
 
 ### *class* ayn.MCPPrompt(name, description, arguments=list())
 
@@ -2324,7 +2362,7 @@ Search for agents in GitHub repositories
 
 #### search(query, , limit=20, \*\*filters)
 
-Search GitHub for agent repos
+Search GitHub for agent repos (not implemented: raises `NotImplementedError`)
 
 * **Return type:**
   [`Iterable`](https://docs.python.org/3/library/typing.html#typing.Iterable)[[`AgentMetadata`](_autosummary/ayn.core.models.html.md#ayn.core.models.AgentMetadata)]
@@ -2426,7 +2464,7 @@ Search for agents in GitHub repositories
 
 #### search(query, , limit=20, \*\*filters)
 
-Search GitHub for agent repos
+Search GitHub for agent repos (not implemented: raises `NotImplementedError`)
 
 * **Return type:**
   [`Iterable`](https://docs.python.org/3/library/typing.html#typing.Iterable)[[`AgentMetadata`](_autosummary/ayn.core.models.html.md#ayn.core.models.AgentMetadata)]
@@ -2532,16 +2570,18 @@ True
 
 # About this build
 
-This documentation was built on **2026-11-22 14:03 UTC** from commit <a href="https://github.com/addaix/ayn/commit/6b951fcacee05a6751425099e19b78c017eb3ba8"><code>6b951fc</code></a> on branch <code>main</code>, for **ayn 0.0.3** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-24 01:37 UTC** from commit <a href="https://github.com/addaix/ayn/commit/35c28b83661970a1445db1bc4a6e70c66fc4e942"><code>35c28b8</code></a> on branch <code>main</code>, for **ayn 0.0.3** (from <code>pyproject.toml</code>).
 
-#### NOTE
-Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
+#### WARNING
+The documentation and the package may be misaligned:
+
+- The documented version (0.0.3) is behind the latest release on PyPI (0.0.4): `pip install ayn` gives newer code than these docs describe.
 
 ## Source
 
 |                     |                                                                                                                                                   |
 |---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/addaix/ayn/commit/6b951fcacee05a6751425099e19b78c017eb3ba8"><code>6b951fcacee05a6751425099e19b78c017eb3ba8</code></a> |
+| Commit              | <a href="https://github.com/addaix/ayn/commit/35c28b83661970a1445db1bc4a6e70c66fc4e942"><code>35c28b83661970a1445db1bc4a6e70c66fc4e942</code></a> |
 | Branch              | <code>main</code>                                                                                                                                 |
 | Tags at this commit | none                                                                                                                                              |
 | Working tree        | clean                                                                                                                                             |
@@ -2552,15 +2592,15 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>addaix/ayn</code>                                                                    |
-| Run          | <a href="https://github.com/addaix/ayn/actions/runs/45030584159">45030584159</a>           |
+| Run          | <a href="https://github.com/addaix/ayn/actions/runs/45306296998">45306296998</a>           |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>6b951fcacee05a6751425099e19b78c017eb3ba8</code> (in the history of the built commit) |
+| Event commit | <code>35c28b83661970a1445db1bc4a6e70c66fc4e942</code> (in the history of the built commit) |
 
 ## Tools
 
 |          |         |
 |----------|---------|
-| epythet  | 0.2.23  |
+| epythet  | 0.2.25  |
 | Sphinx   | 9.1.1   |
 | docutils | 0.22.4  |
 | Python   | 3.12.16 |
@@ -2579,14 +2619,14 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/ayn/0.0.3/">0.0.3</a>, the same as the documented version.
+Latest release: <a href="https://pypi.org/project/ayn/0.0.4/">0.0.4</a>, newer than the documented version (0.0.3).
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/addaix/ayn && cd ayn
-git checkout 6b951fcacee05a6751425099e19b78c017eb3ba8
-pip install "epythet==0.2.23"
+git checkout 35c28b83661970a1445db1bc4a6e70c66fc4e942
+pip install "epythet==0.2.25"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
 

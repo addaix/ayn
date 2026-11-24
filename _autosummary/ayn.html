@@ -614,6 +614,9 @@ of their underlying framework.</p>
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ayn.</span></span><span class="sig-name descname"><span class="pre">AutoGenController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ayn/controllers/framework.html#AutoGenController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ayn.AutoGenController" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="ayn.controllers.generic.html#ayn.controllers.generic.GenericController" title="ayn.controllers.generic.GenericController"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericController</span></code></a></p>
 <p>Controller for AutoGen agents</p>
+<p>Not implemented yet: today this behaves exactly like <a class="reference internal" href="#ayn.GenericController" title="ayn.GenericController"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericController</span></code></a>
+(it echoes its input) and does not run an AutoGen agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details</p>
 <dl class="field-list simple">
 </dl>
 </dd></dl>
@@ -739,6 +742,9 @@ of their underlying framework.</p>
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ayn.</span></span><span class="sig-name descname"><span class="pre">CrewAIController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ayn/controllers/framework.html#CrewAIController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ayn.CrewAIController" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="ayn.controllers.generic.html#ayn.controllers.generic.GenericController" title="ayn.controllers.generic.GenericController"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericController</span></code></a></p>
 <p>Controller for CrewAI agents</p>
+<p>Not implemented yet: today this behaves exactly like <a class="reference internal" href="#ayn.GenericController" title="ayn.GenericController"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericController</span></code></a>
+(it echoes its input) and does not run a CrewAI agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details</p>
 <dl class="field-list simple">
 </dl>
 </dd></dl>
@@ -785,7 +791,7 @@ of their underlying framework.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="ayn.GitHubAgentSearcher.search">
 <span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ayn/registry/searchers.html#GitHubAgentSearcher.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ayn.GitHubAgentSearcher.search" title="Link to this definition">¶</a></dt>
-<dd><p>Search GitHub for agent repos</p>
+<dd><p>Search GitHub for agent repos (not implemented: raises <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference internal" href="ayn.core.models.html#ayn.core.models.AgentMetadata" title="ayn.core.models.AgentMetadata"><code class="xref py py-class docutils literal notranslate"><span class="pre">AgentMetadata</span></code></a>]</span></p>
@@ -826,6 +832,9 @@ of their underlying framework.</p>
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ayn.</span></span><span class="sig-name descname"><span class="pre">LangChainController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ayn/controllers/framework.html#LangChainController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ayn.LangChainController" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="ayn.controllers.generic.html#ayn.controllers.generic.GenericController" title="ayn.controllers.generic.GenericController"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericController</span></code></a></p>
 <p>Controller for LangChain agents</p>
+<p>Not implemented yet: today this behaves exactly like <a class="reference internal" href="#ayn.GenericController" title="ayn.GenericController"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericController</span></code></a>
+(it echoes its input) and does not run a LangChain agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details</p>
 <dl class="field-list simple">
 </dl>
 </dd></dl>

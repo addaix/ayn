@@ -324,7 +324,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="o">**</span><span class="n">filters</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">AgentMetadata</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">"""Search GitHub for agent repos"""</span>
+<span class="w">        </span><span class="sd">"""Search GitHub for agent repos (not implemented: raises ``NotImplementedError``)"""</span>
         <span class="c1"># Simplified implementation - real version would use GitHub API</span>
         <span class="c1"># TODO: Implement actual GitHub API search</span>
         <span class="n">framework_filter</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"framework"</span><span class="p">)</span>
@@ -332,8 +332,9 @@
         <span class="k">if</span> <span class="n">framework_filter</span><span class="p">:</span>
             <span class="n">search_terms</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">" </span><span class="si">{</span><span class="n">framework_filter</span><span class="si">}</span><span class="s2">"</span>
 
-        <span class="c1"># Placeholder - would normally make API calls</span>
-        <span class="k">return</span> <span class="p">[]</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">"GitHubAgentSearcher is not implemented yet (no GitHub API search)."</span>
+        <span class="p">)</span></div>
 </div>
 
 
@@ -359,14 +360,9 @@
         <span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="o">**</span><span class="n">filters</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">AgentMetadata</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">"""Search Hugging Face for agents"""</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="c1"># Try to use HuggingFace MCP tools if available</span>
-            <span class="c1"># This would integrate with the HF tools we have access to</span>
-            <span class="k">pass</span>
-        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-            <span class="k">pass</span>
-
-        <span class="k">return</span> <span class="p">[]</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">"HuggingFaceAgentSearcher is not implemented yet (no Hugging Face search)."</span>
+        <span class="p">)</span></div>
 </div>
 
 
@@ -395,7 +391,9 @@
 <span class="w">        </span><span class="sd">"""Search awesome lists"""</span>
         <span class="c1"># TODO: Implement markdown parsing and search</span>
         <span class="c1"># Would use graze to download and cache the markdown files</span>
-        <span class="k">return</span> <span class="p">[]</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">"AwesomeListSearcher is not implemented yet (no awesome-list parsing)."</span>
+        <span class="p">)</span></div>
 </div>
 
 </pre></div>

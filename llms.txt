@@ -28,7 +28,7 @@
 - [ayn.registry.base](_autosummary/ayn.registry.base.html.md): Agent registry implementation.
 - [ayn.registry.searchers](_autosummary/ayn.registry.searchers.html.md): Agent searcher implementations.
 - [ayn.utils](_autosummary/ayn.utils.html.md): Convenience utility functions.
-- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-22 14:03 UTC&#42;&#42; from commit &lt;a href="https://github.com/add...
+- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-24 01:37 UTC&#42;&#42; from commit &lt;a href="https://github.com/add...
 
 ## Optional
 

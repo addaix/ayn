@@ -64,7 +64,7 @@ Search for agents in GitHub repositories
 
 #### search(query, , limit=20, \*\*filters)
 
-Search GitHub for agent repos
+Search GitHub for agent repos (not implemented: raises `NotImplementedError`)
 
 * **Return type:**
   [`Iterable`](https://docs.python.org/3/library/typing.html#typing.Iterable)[[`AgentMetadata`](ayn.core.models.html.md#ayn.core.models.AgentMetadata)]

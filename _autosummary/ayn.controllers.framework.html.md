@@ -15,14 +15,26 @@ Bases: [`GenericController`](ayn.controllers.generic.html.md#ayn.controllers.gen
 
 Controller for AutoGen agents
 
+Not implemented yet: today this behaves exactly like `GenericController`
+(it echoes its input) and does not run an AutoGen agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
+
 ### *class* ayn.controllers.framework.CrewAIController(metadata, config)
 
 Bases: [`GenericController`](ayn.controllers.generic.html.md#ayn.controllers.generic.GenericController)
 
 Controller for CrewAI agents
 
+Not implemented yet: today this behaves exactly like `GenericController`
+(it echoes its input) and does not run a CrewAI agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
+
 ### *class* ayn.controllers.framework.LangChainController(metadata, config)
 
 Bases: [`GenericController`](ayn.controllers.generic.html.md#ayn.controllers.generic.GenericController)
 
 Controller for LangChain agents
+
+Not implemented yet: today this behaves exactly like `GenericController`
+(it echoes its input) and does not run a LangChain agent.
+See AYN_IMPLEMENTATION_ROADMAP.md for details
